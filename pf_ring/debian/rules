@@ -1,0 +1,77 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+#export PFRING_VERSION=5.6.0
+export PFRING_VERSION=`grep PF_RING ChangeLog |head -1 |cut -d' ' -f3`
+
+configure: configure-stamp
+configure-stamp:
+	dh_testdir
+	dh_auto_configure -D userland/lib -B userland/lib
+	dh_auto_configure -D userland/libpcap-1.1.1-ring -B userland/libpcap-1.1.1-ring
+
+	touch configure-stamp
+
+build: build-stamp
+build-stamp: configure-stamp
+	dh_testdir
+	# Add here commands to compile the package.
+	#$(MAKE) 
+	dh_auto_build -D userland/lib -B userland/lib
+	dh_auto_build -D userland/libpcap-1.1.1-ring -B userland/libpcap-1.1.1-ring
+
+	dh_auto_configure -D userland/tcpdump-4.1.1 -B userland/tcpdump-4.1.1
+	dh_auto_build -D userland/tcpdump-4.1.1 -B userland/tcpdump-4.1.1
+
+	dh_auto_install -D userland/lib
+	dh_auto_install -D userland/libpcap-1.1.1-ring
+	dh_auto_install -D userland/tcpdump-4.1.1
+
+	touch build-stamp
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp configure-stamp
+	[ ! -f userland/lib/Makefile ] || dh_auto_clean -D userland/lib
+	[ ! -f userland/libpcap-1.1.1-ring/Makefile ] || dh_auto_clean -D userland/libpcap-1.1.1-ring
+	[ ! -f userland/tcpdump-4.1.1/Makefile ] || dh_auto_clean -D userland/tcpdump-4.1.1
+
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_installdirs
+	dh_install
+
+# Build architecture-independent files here.
+binary-indep: build install
+	install -d -m 755 $(CURDIR)/debian/pfring-dkms/usr/src/pf_ring-$(PFRING_VERSION)
+	cp -Rf kernel/* $(CURDIR)/debian/pfring-dkms/usr/src/pf_ring-$(PFRING_VERSION)/
+	sed "s/@version@/$(PFRING_VERSION)/g" $(CURDIR)/debian/dkms.conf > $(CURDIR)/debian/pfring-dkms.dkms
+	dh_dkms -ppfring-dkms
+
+# Build architecture-dependent files here.
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs 
+	dh_installdocs
+	dh_installexamples
+	dh_installinit
+	dh_installman
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_makeshlibs -plibpfring
+	dh_makeshlibs -plibpcap1.1
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install

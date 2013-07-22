@@ -1,0 +1,60 @@
+Source: pfring
+Section: net
+Priority: optional
+Maintainer: Lou Ruppert <himself@louruppert.com>
+Build-Depends: debhelper (>= 8),
+    autotools-dev
+Standards-Version: 3.9.4
+Homepage: http://www.ntop.org/
+
+Package: pfring-dkms
+Architecture: all
+Section: kernel
+Depends: ${misc:Depends}
+Description: Source for the pfring Linux kernel module (DKMS)
+
+Package: libpfring-dev
+Section: libdevel
+Architecture: any
+Depends: libpfring (= ${binary:Version}), ${misc:Depends}, libc6-dev
+Description: development library and header files for libfring
+ Headers, static libraries, and documentation for the libfring library.
+
+Package: libpfring
+Section: libs
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Replaces: libpfring-dev
+Description: system interface for user-level packet capture
+
+Package: libpcap1.1-dev
+Section: libdevel
+Architecture: any
+Conflicts: libpcap0.8-dev
+Depends: libpfring-dev (= ${binary:Version}), ${misc:Depends}, libc6-dev
+Description: development library and header files for libpcap
+ Headers, static libraries, and documentation for the libpcap library.
+
+Package: libpcap1.1
+Section: libs
+Architecture: any
+Conflicts: libpcap0.8
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: system interface for user-level packet capture
+
+Package: tcpdump
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: command-line network traffic analyzer
+ This program allows you to dump the traffic on a network. tcpdump 
+ is able to examine IPv4, ICMPv4, IPv6, ICMPv6, UDP, TCP, SNMP, AFS
+ BGP, RIP, PIM, DVMRP, IGMP, SMB, OSPF, NFS and many other packet
+ types.
+ .
+ It can be used to print out the headers of packets on a network 
+ interface, filter packets that match a certain expression. You can 
+ use this tool to track down network problems, to detect attacks
+ or to monitor network activities. 
