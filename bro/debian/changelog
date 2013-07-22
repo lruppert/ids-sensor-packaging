@@ -1,0 +1,11 @@
+bro (2.1-2) stable; urgency=low
+
+  * Initial packaging framework
+
+ -- Lou Ruppert <himself@louruppert.com>  Fri, 19 Jul 2013 20:45:19 +0000
+
+bro (2.1-1) stable; urgency=low
+
+  * Initial release.
+
+ -- Lou Ruppert <himself@louruppert.com>  Fri, 19 Jul 2013 20:40:51 +0000
