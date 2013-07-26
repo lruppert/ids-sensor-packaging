@@ -12,5 +12,7 @@ to go.
 For bro: just copy the bro/debian directory into place, create a changelog
 entry for the version you're working with and you're ready to go.
 
-For suricata: If you're running Debian squeeze, apply the diffs and you should
-be good to go. For wheezy you might not need it.
+For suricata: just copy the suricata/debian directory into place, create a
+changelog entry for the version you're working with and you're ready to go.
+The debian directory is derived from the Debian official one and should work
+for any 1.4.x variant.
