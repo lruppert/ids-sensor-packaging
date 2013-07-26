@@ -1,0 +1,31 @@
+Source: suricata
+Section: net
+Priority: optional
+Maintainer: Lou Ruppert <himself@louruppert.com>
+Build-Depends: debhelper (>= 8),
+    autotools-dev,
+    libnet1-dev | libnet-dev,
+    libnspr4-dev,
+    libnss3-dev,
+    libpcap-dev | libpcap1.1-dev,
+    libpcre3-dev,
+    libyaml-dev,
+    libnetfilter-queue-dev,
+    libprelude-dev,
+    zlib1g-dev | libz-dev,
+    libcap-ng-dev,
+    libmagic-dev,
+    libpfring-dev,
+    python
+X-Python-Version: >= 2.6
+Standards-Version: 3.9.4
+Homepage: http://www.openinfosecfoundation.org/
+
+Package: suricata
+Architecture: any
+Depends: ${shlibs:Depends},
+    ${misc:Depends},
+    ${python:Depends}
+Recommends: oinkmaster, snort-rules-default, python
+Description: Hacked together repackaging of suricata, configured to use
+  libpfring and derived from Pierre Chifflier's existing Debianization

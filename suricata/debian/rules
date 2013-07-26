@@ -1,0 +1,52 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# debian/rules file for Suricata
+# Written by Pierre Chifflier
+# This file was originally written by Joey Hess and Craig Small.
+# As a special exception, when this file is copied by dh-make into a
+# dh-make output file, you may use that output file without restriction.
+# This special exception was added by Craig Small in version 0.37 of dh-make.
+# This was modified by Lou Ruppert to use the bundled libhtp because the
+# version available in older Debian releases is too primitive. It was also
+# modified to take advantage of the pfring libraries to do faster captures.
+
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+
+export DEB_BUILD_MAINT_OPTIONS=hardening=+pie,+bindnow
+
+DEB_DESTDIR = $(CURDIR)/debian/suricata
+
+ARCH ?= $(shell dpkg --print-architecture)
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+LUAJIT_ARCHS = ''
+
+ifneq (,$(findstring $(ARCH),$(LUAJIT_ARCHS)))
+	ENABLE_LUAJIT="--enable-luajit"
+endif
+
+CONFIGURE_ARGS = --enable-af-packet --enable-nfqueue --enable-pfring --enable-prelude \
+	--enable-gccprotect --disable-gccmarch-native \
+	--with-libnss-includes=/usr/include/nss --with-libnss-libraries=/usr/lib/$(DEB_HOST_MULTIARCH) \
+	--with-libnspr-includes=/usr/include/nspr --with-libnspr-libraries=/usr/lib/$(DEB_HOST_MULTIARCH) \
+	$(ENABLE_LUAJIT)
+
+override_dh_auto_install:
+	dh_auto_install --destdir=$(DEB_DESTDIR)
+	rm -rf $(DEB_DESTDIR)/usr/lib/python*;\
+	(cd scripts/suricatasc &&\
+		python -B setup.py install --install-layout=deb --prefix $(DEB_DESTDIR)/usr)
+
+override_dh_auto_configure:
+	dh_auto_configure -- $(CONFIGURE_ARGS)
+	sed \
+		-e 's|^default-rule-path: .*$$|default-rule-path: /etc/snort/rules|' \
+		 suricata.yaml > suricata-debian.yaml
+
+override_dh_clean:
+	rm -f suricata-debian.yaml
+	dh_clean
+
+%:
+	dh  $@ --parallel --with=python2
