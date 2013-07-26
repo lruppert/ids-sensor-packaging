@@ -1,4 +1,4 @@
-.PHONY: package prepackage sources pkgclean
+.PHONY: package prepackage sources pkgclean distclean
 
 include config.mk
 
@@ -47,8 +47,7 @@ ifneq ("$(HTTP_PROXY)","")
 	CURL_PROXY := -x $(HTTP_PROXY)
 endif
 
-#SUBPKGS = pf_ring bro suricata
-SUBPKGS = pf_ring bro
+SUBPKGS = suricata pf_ring bro
 
 package: prepackage sources $(SUBPKGS:%=%_debian)
 
@@ -62,6 +61,9 @@ sources: $(SUBPKGS:%=%_source)
 
 pkgclean:
 	@rm -rf $(DISTDIR)
+
+distclean: pkgclean
+	@rm -rf downloads
 
 #
 # Support functions
