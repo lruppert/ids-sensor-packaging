@@ -1,4 +1,4 @@
-Source: suricata
+Source: suricata-pfring
 Section: net
 Priority: optional
 Maintainer: Lou Ruppert <himself@louruppert.com>
@@ -21,7 +21,7 @@ X-Python-Version: >= 2.6
 Standards-Version: 3.9.4
 Homepage: http://www.openinfosecfoundation.org/
 
-Package: suricata
+Package: suricata-pfring
 Architecture: any
 Depends: ${shlibs:Depends},
     ${misc:Depends},

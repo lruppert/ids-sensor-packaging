@@ -1,4 +1,4 @@
-suricata (1.4.5-1) unstable; urgency=low
+suricata-pfring (1.4.5-1) unstable; urgency=low
 
   * Modified Pierre Chifflier's existing package to use PF_RING
   * Imported Upstream version 1.4.5
