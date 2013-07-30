@@ -1,12 +1,12 @@
-Source: bro
+Source: bro-pfring
 Section: net
 Priority: optional
 Uploaders: Lou Ruppert <himself@louruppert.com>
 Maintainer: Lou Ruppert <himself@louruppert.com>
-Build-Depends: debhelper (>= 5)
+Build-Depends: debhelper (>= 5) libpfring-dev
 Standards-Version: 3.7.2
 
-Package: bro
+Package: bro-pfring
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: Bro IDS software
+Description: Bro IDS software with PF_RING support
