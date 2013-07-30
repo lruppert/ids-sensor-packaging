@@ -6,7 +6,7 @@ PF_RING_SCHEME := http
 PF_RING_HOST := iweb.dl.sourceforge.net
 PF_RING_PATH := /project/ntop/PF_RING
 PF_RING_TARBALL := PF_RING-$(PF_RING_VERSION).tar.gz
-PF_RING_DL_URL := http://$(PF_RING_HOST)$(PF_RING_PATH)/$(PF_RING_TARBALL)
+PF_RING_DL_URL := $(PF_RING_SCHEME)://$(PF_RING_HOST)$(PF_RING_PATH)/$(PF_RING_TARBALL)
 
 #
 # bro sources
@@ -16,7 +16,17 @@ BRO_SCHEME := http
 BRO_HOST := www.bro.org
 BRO_PATH := /downloads/release
 BRO_TARBALL := bro-$(BRO_VERSION).tar.gz
-BRO_DL_URL := http://$(BRO_HOST)$(BRO_PATH)/$(BRO_TARBALL)
+BRO_DL_URL := $(BRO_SCHEME)://$(BRO_HOST)$(BRO_PATH)/$(BRO_TARBALL)
+
+#
+# suricata sources
+#
+SURICATA_VERSION ?= 1.4.5
+SURICATA_SCHEME := http
+SURICATA_HOST := www.openinfosecfoundation.org
+SURICATA_PATH := /download
+SURICATA_TARBALL := suricata-$(SURICATA_VERSION).tar.gz
+SURICATA_DL_URL := $(SURICATA_SCHEME)://$(SURICATA_HOST)$(SURICATA_PATH)/$(SURICATA_TARBALL)
 
 #
 # HTTP Proxy
