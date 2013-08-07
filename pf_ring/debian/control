@@ -3,14 +3,17 @@ Section: net
 Priority: optional
 Maintainer: Lou Ruppert <himself@louruppert.com>
 Build-Depends: debhelper (>= 8),
-    autotools-dev
+    autotools-dev,
+    flex,
+    bison,
+    dkms
 Standards-Version: 3.9.4
 Homepage: http://www.ntop.org/
 
 Package: pfring-dkms
 Architecture: all
 Section: kernel
-Depends: ${misc:Depends}
+Depends: ${misc:Depends}, dkms
 Description: Source for the pfring Linux kernel module (DKMS)
 
 Package: libpfring-dev
