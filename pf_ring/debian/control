@@ -4,6 +4,7 @@ Priority: optional
 Maintainer: Lou Ruppert <himself@louruppert.com>
 Build-Depends: debhelper (>= 8),
     autotools-dev,
+    libnuma-dev,
     flex,
     bison,
     dkms
