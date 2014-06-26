@@ -47,7 +47,7 @@ ifneq ("$(HTTP_PROXY)","")
 	CURL_PROXY := -x $(HTTP_PROXY)
 endif
 
-SUBPKGS = suricata pf_ring bro
+SUBPKGS = pf_ring suricata bro
 
 package: prepackage sources $(SUBPKGS:%=%_debian)
 
