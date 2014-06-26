@@ -50,7 +50,6 @@ install: build
 binary-indep: build install
 	install -d -m 755 $(CURDIR)/debian/pfring-dkms/usr/src/pf_ring-$(PFRING_VERSION)
 	cp -Rf kernel/* $(CURDIR)/debian/pfring-dkms/usr/src/pf_ring-$(PFRING_VERSION)/
-	install -m 644 $(CURDIR)/debian/pfring-dkms-Makefile $(CURDIR)/debian/pfring-dkms/usr/src/pf_ring-$(PFRING_VERSION)/Makefile
 	sed "s/@version@/$(PFRING_VERSION)/g" $(CURDIR)/debian/dkms.conf > $(CURDIR)/debian/pfring-dkms.dkms
 	dh_dkms -ppfring-dkms
 
