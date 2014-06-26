@@ -3,7 +3,7 @@ Section: net
 Priority: optional
 Uploaders: Lou Ruppert <himself@louruppert.com>
 Maintainer: Lou Ruppert <himself@louruppert.com>
-Build-Depends: debhelper (>=5), libpfring-dev, cmake
+Build-Depends: debhelper (>=5), libpfring-dev, libgeoip-dev, python-dev, cmake
 Standards-Version: 3.7.2
 
 Package: bro-pfring
