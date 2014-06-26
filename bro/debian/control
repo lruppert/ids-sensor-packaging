@@ -3,7 +3,7 @@ Section: net
 Priority: optional
 Uploaders: Lou Ruppert <himself@louruppert.com>
 Maintainer: Lou Ruppert <himself@louruppert.com>
-Build-Depends: debhelper (>= 5) libpfring-dev
+Build-Depends: debhelper (>=5), libpfring-dev
 Standards-Version: 3.7.2
 
 Package: bro-pfring
