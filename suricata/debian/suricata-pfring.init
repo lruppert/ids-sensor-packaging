@@ -15,10 +15,10 @@
 . /lib/lsb/init-functions
 
 # Source function library.
-if test -f /etc/default/suricata; then
-    . /etc/default/suricata
+if test -f /etc/default/suricata-pfring; then
+    . /etc/default/suricata-pfring
 else
-    echo "/etc/default/suricata is missing... bailing out!"
+    echo "/etc/default/suricata-pfring is missing... bailing out!"
 fi
 
 # We'll add up all the options above and use them
@@ -41,10 +41,10 @@ check_root()  {
     fi
 }
 
-check_nfqueue() {
-if [ ! -e /proc/net/netfilter/nf_queue ]; then
-    log_failure_msg "NFQUEUE support not found !"
-    log_failure_msg "Please ensure the nfnetlink_queue module is loaded or built in kernel"
+check_pfring() {
+if [ ! -e /proc/net/pf_ring/info ]; then
+    log_failure_msg "PF_RING support not found !"
+    log_failure_msg "Please ensure the pf_ring module is loaded or built in kernel"
     exit 5
 fi
 }
@@ -64,7 +64,6 @@ case "$LISTENMODE" in
   nfqueue)
     IDMODE="IPS (nfqueue)"
     LISTEN_OPTIONS=" -q $NFQUEUE"
-    check_nfqueue
     ;;
   pcap)
     IDMODE="IDS (pcap)"
@@ -73,6 +72,7 @@ case "$LISTENMODE" in
   pfring)
     IDMODE="IDS (pfring)"
     LISTEN_OPTIONS=" --pfring"
+    check_pfring
     ;;
   af-packet)
     IDMODE="IDS (af-packet)"
