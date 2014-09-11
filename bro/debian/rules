@@ -68,9 +68,9 @@ binary-indep: build install
 	cp $(CURDIR)/debian/bro-pfring/usr/local/bro/current/share/bro/site/local.bro $(CURDIR)/debian/bro-pfring/etc/bro/site/local.bro.example
 	cp $(CURDIR)/debian/bro-pfring/usr/local/bro/current/share/bro/site/local-manager.bro $(CURDIR)/debian/bro-pfring/etc/bro/site/local-manager.bro.example
 	cp $(CURDIR)/debian/bro-pfring/usr/local/bro/current/share/bro/site/local-proxy.bro $(CURDIR)/debian/bro-pfring/etc/bro/site/local-proxy.bro.example
-	cp $(CURDIR)/debian/bro/usr/local/bro/current/share/bro/site/local-worker.bro $(CURDIR)/debian/bro/etc/bro/site/local-worker.bro.example
-	mv $(CURDIR)/debian/bro/usr/local/bro/current/etc $(CURDIR)/debian/bro/usr/local/bro/current/etc.dist
-	mv $(CURDIR)/debian/bro/usr/local/bro/current/share/bro/site $(CURDIR)/debian/bro/usr/local/bro/current/share/bro/site.dist
+	cp $(CURDIR)/debian/bro-pfring/usr/local/bro/current/share/bro/site/local-worker.bro $(CURDIR)/debian/bro/etc/bro/site/local-worker.bro.example
+	mv $(CURDIR)/debian/bro-pfring/usr/local/bro/current/etc $(CURDIR)/debian/bro-pfring/usr/local/bro/current/etc.dist
+	mv $(CURDIR)/debian/bro-pfring/usr/local/bro/current/share/bro/site $(CURDIR)/debian/bro-pfring/usr/local/bro/current/share/bro/site.dist
 
 binary: binary-indep binary-arch
 .PHONY: build clean binary-indep binary-arch binary install
