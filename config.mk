@@ -12,7 +12,7 @@ PF_RING_DL_URL := $(PF_RING_SCHEME)://$(PF_RING_HOST)$(PF_RING_PATH)/$(PF_RING_T
 # bro sources
 #
 BRO_VERSION ?= 2.3.1
-BRO_SCHEME := http
+BRO_SCHEME := https
 BRO_HOST := www.bro.org
 BRO_PATH := /downloads/release
 BRO_TARBALL := bro-$(BRO_VERSION).tar.gz
