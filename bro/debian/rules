@@ -55,5 +55,22 @@ binary-arch: build install
 	dh_md5sums
 	dh_builddeb
 
+binary-indep: build install
+	mkdir -p $(CURDIR)/debian/bro/etc/bro/site
+	mkdir -p $(CURDIR)/debian/bro/var/log/bro
+	mkdir -p $(CURDIR)/debian/bro/var/spool/bro
+	(cd $(CURDIR)/debian/bro/usr/local/bro; ln -s $(BRO_VERSION) current)
+	cp $(CURDIR)/debian/bro/usr/local/bro/current/etc/broccoli.conf $(CURDIR)/debian/bro/etc/bro/broccoli.conf.example
+	cp $(CURDIR)/debian/bro/usr/local/bro/current/etc/broctl.cfg $(CURDIR)/debian/bro/etc/bro/broctl.cfg.example
+	cp $(CURDIR)/debian/bro/usr/local/bro/current/etc/node.cfg $(CURDIR)/debian/bro/etc/bro/node.cfg.example
+	cp $(CURDIR)/debian/bro/usr/local/bro/current/etc/networks.cfg $(CURDIR)/debian/bro/etc/bro/networks.cfg.example
+	cp $(CURDIR)/debian/bro/usr/local/bro/current/etc/site/local.bro $(CURDIR)/debian/bro/etc/bro/site/local.bro.example
+	cp $(CURDIR)/debian/bro/usr/local/bro/current/etc/site/local-manager.bro $(CURDIR)/debian/bro/etc/bro/site/local-manager.bro.example
+	cp $(CURDIR)/debian/bro/usr/local/bro/current/etc/site/local-proxy.bro $(CURDIR)/debian/bro/etc/bro/site/local-proxy.bro.example
+	cp $(CURDIR)/debian/bro/usr/local/bro/current/etc/site/local-worker.bro $(CURDIR)/debian/bro/etc/bro/site/local-worker.bro.example
+	mv $(CURDIR)/debian/bro/usr/local/bro/current/etc $(CURDIR)/debian/bro/usr/local/bro/current/etc.dist
+	mv $(CURDIR)/debian/bro/usr/local/bro/current/share/bro/site $(CURDIR)/debian/bro/usr/local/bro/current/share/bro/site.dist
+ux
+
 binary: binary-indep binary-arch
 .PHONY: build clean binary-indep binary-arch binary install
