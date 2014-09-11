@@ -56,18 +56,18 @@ binary-arch: build install
 	dh_builddeb
 
 binary-indep: build install
-	mkdir -p $(CURDIR)/debian/bro/etc/bro/site
-	mkdir -p $(CURDIR)/debian/bro/var/log/bro
-	mkdir -p $(CURDIR)/debian/bro/var/spool/bro
-	echo /usr/local/bro/$(BRO_VERSION) /usr/local/bro/current > $(CURDIR)/bro.links
+	mkdir -p $(CURDIR)/debian/bro-pfring/etc/bro/site
+	mkdir -p $(CURDIR)/debian/bro-pfring/var/log/bro
+	mkdir -p $(CURDIR)/debian/bro-pfring/var/spool/bro
+	echo /usr/local/bro/$(BRO_VERSION) /usr/local/bro/current > $(CURDIR)/debian/bro-pfring.links
 	dh_link
-	cp $(CURDIR)/debian/bro/usr/local/bro/current/etc/broccoli.conf $(CURDIR)/debian/bro/etc/bro/broccoli.conf.example
-	cp $(CURDIR)/debian/bro/usr/local/bro/current/etc/broctl.cfg $(CURDIR)/debian/bro/etc/bro/broctl.cfg.example
-	cp $(CURDIR)/debian/bro/usr/local/bro/current/etc/node.cfg $(CURDIR)/debian/bro/etc/bro/node.cfg.example
-	cp $(CURDIR)/debian/bro/usr/local/bro/current/etc/networks.cfg $(CURDIR)/debian/bro/etc/bro/networks.cfg.example
-	cp $(CURDIR)/debian/bro/usr/local/bro/current/etc/site/local.bro $(CURDIR)/debian/bro/etc/bro/site/local.bro.example
-	cp $(CURDIR)/debian/bro/usr/local/bro/current/etc/site/local-manager.bro $(CURDIR)/debian/bro/etc/bro/site/local-manager.bro.example
-	cp $(CURDIR)/debian/bro/usr/local/bro/current/etc/site/local-proxy.bro $(CURDIR)/debian/bro/etc/bro/site/local-proxy.bro.example
+	cp $(CURDIR)/debian/bro-pfring/usr/local/bro/current/etc/broccoli.conf $(CURDIR)/debian/bro-pfring/etc/bro/broccoli.conf.example
+	cp $(CURDIR)/debian/bro-pfring/usr/local/bro/current/etc/broctl.cfg $(CURDIR)/debian/bro-pfring/etc/bro/broctl.cfg.example
+	cp $(CURDIR)/debian/bro-pfring/usr/local/bro/current/etc/node.cfg $(CURDIR)/debian/bro-pfring/etc/bro/node.cfg.example
+	cp $(CURDIR)/debian/bro-pfring/usr/local/bro/current/etc/networks.cfg $(CURDIR)/debian/bro-pfring/etc/bro/networks.cfg.example
+	cp $(CURDIR)/debian/bro-pfring/usr/local/bro/current/etc/site/local.bro $(CURDIR)/debian/bro-pfring/etc/bro/site/local.bro.example
+	cp $(CURDIR)/debian/bro-pfring/usr/local/bro/current/etc/site/local-manager.bro $(CURDIR)/debian/bro-pfring/etc/bro/site/local-manager.bro.example
+	cp $(CURDIR)/debian/bro-pfring/usr/local/bro/current/etc/site/local-proxy.bro $(CURDIR)/debian/bro-pfring/etc/bro/site/local-proxy.bro.example
 	cp $(CURDIR)/debian/bro/usr/local/bro/current/etc/site/local-worker.bro $(CURDIR)/debian/bro/etc/bro/site/local-worker.bro.example
 	mv $(CURDIR)/debian/bro/usr/local/bro/current/etc $(CURDIR)/debian/bro/usr/local/bro/current/etc.dist
 	mv $(CURDIR)/debian/bro/usr/local/bro/current/share/bro/site $(CURDIR)/debian/bro/usr/local/bro/current/share/bro/site.dist
