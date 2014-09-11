@@ -59,7 +59,8 @@ binary-indep: build install
 	mkdir -p $(CURDIR)/debian/bro/etc/bro/site
 	mkdir -p $(CURDIR)/debian/bro/var/log/bro
 	mkdir -p $(CURDIR)/debian/bro/var/spool/bro
-	(cd $(CURDIR)/debian/bro/usr/local/bro; ln -s $(BRO_VERSION) current)
+	echo /usr/local/bro/$(BRO_VERSION) /usr/local/bro/current > $(CURDIR)/bro.links
+	dh_link
 	cp $(CURDIR)/debian/bro/usr/local/bro/current/etc/broccoli.conf $(CURDIR)/debian/bro/etc/bro/broccoli.conf.example
 	cp $(CURDIR)/debian/bro/usr/local/bro/current/etc/broctl.cfg $(CURDIR)/debian/bro/etc/bro/broctl.cfg.example
 	cp $(CURDIR)/debian/bro/usr/local/bro/current/etc/node.cfg $(CURDIR)/debian/bro/etc/bro/node.cfg.example
