@@ -1,3 +1,9 @@
+suricata-pfring (2.0.6-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Lou Ruppert <himself@louruppert.com>  Wed, 28 Jan 2015 12:52:14 +0100
+
 suricata-pfring (2.0.4-1) unstable; urgency=low
 
   * Modified Pierre Chifflier's existing package to use PF_RING
