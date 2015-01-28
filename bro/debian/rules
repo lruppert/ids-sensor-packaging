@@ -9,7 +9,7 @@ export BRO_VERSION=`dpkg-parsechangelog |grep Version|cut -d' ' -f2`
 configure: configure-stamp
 configure-stamp:
 	dh_testdir
-	./configure --prefix=/usr/local/bro/$(BRO_VERSION)
+	LDFLAGS="-Wl,--no-as-needed -lrt" ./configure --prefix=/usr/local/bro/$(BRO_VERSION)
 
 	touch configure-stamp
 
