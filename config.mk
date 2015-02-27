@@ -21,7 +21,7 @@ BRO_DL_URL := $(BRO_SCHEME)://$(BRO_HOST)$(BRO_PATH)/$(BRO_TARBALL)
 #
 # suricata sources
 #
-SURICATA_VERSION ?= 2.0.6
+SURICATA_VERSION ?= 2.0.7
 SURICATA_SCHEME := http
 SURICATA_HOST := www.openinfosecfoundation.org
 SURICATA_PATH := /download
