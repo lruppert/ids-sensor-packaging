@@ -21,7 +21,7 @@ build-stamp: configure-stamp
 	dh_auto_build -D userland/lib -B userland/lib
 	dh_auto_build -D userland/libpcap-1.1.1-ring -B userland/libpcap-1.1.1-ring
 
-	dh_auto_configure -D userland/tcpdump-4.1.1 -B userland/tcpdump-4.1.1
+	CFLAGS=-L../libpcap-1.1.1-ring dh_auto_configure -D userland/tcpdump-4.1.1 -B userland/tcpdump-4.1.1
 	dh_auto_build -D userland/tcpdump-4.1.1 -B userland/tcpdump-4.1.1
 
 	dh_auto_install -D userland/lib
