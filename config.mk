@@ -1,7 +1,7 @@
 #
 # pfring sources
 #
-PF_RING_VERSION ?= 6.0.2
+PF_RING_VERSION ?= 6.0.3
 PF_RING_SCHEME := http
 PF_RING_HOST := iweb.dl.sourceforge.net
 PF_RING_PATH := /project/ntop/PF_RING
