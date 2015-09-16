@@ -1,3 +1,9 @@
+bro-pfring (2.4.1-1) stable; urgency=low
+
+  * New upstream release
+
+ -- Lou Ruppert <himself@louruppert.com>  Wed, 16 Sep 2015 16:50:58 +0200
+
 bro-pfring (2.3.2-1) stable; urgency=low
 
   * New upstream release
