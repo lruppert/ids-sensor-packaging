@@ -4,6 +4,7 @@ Priority: optional
 Maintainer: Lou Ruppert <himself@louruppert.com>
 Build-Depends: debhelper (>= 8),
     autotools-dev,
+    libjansson-dev,
     libnet1-dev | libnet-dev,
     libnspr4-dev,
     libnss3-dev,
