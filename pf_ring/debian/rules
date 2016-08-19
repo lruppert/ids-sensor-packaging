@@ -9,7 +9,7 @@ configure: configure-stamp
 configure-stamp:
 	dh_testdir
 	dh_auto_configure -D userland/lib -B userland/lib
-	dh_auto_configure -D userland/libpcap-1.1.1-ring -B userland/libpcap-1.1.1-ring
+	dh_auto_configure -D userland/libpcap-1.7.4-ring -B userland/libpcap-1.7.4-ring
 
 	touch configure-stamp
 
@@ -19,14 +19,14 @@ build-stamp: configure-stamp
 	# Add here commands to compile the package.
 	#$(MAKE) 
 	dh_auto_build -D userland/lib -B userland/lib
-	dh_auto_build -D userland/libpcap-1.1.1-ring -B userland/libpcap-1.1.1-ring
+	dh_auto_build -D userland/libpcap-1.7.4-ring -B userland/libpcap-1.7.4-ring
 
-	CFLAGS=-L../libpcap-1.1.1-ring dh_auto_configure -D userland/tcpdump-4.1.1 -B userland/tcpdump-4.1.1
-	dh_auto_build -D userland/tcpdump-4.1.1 -B userland/tcpdump-4.1.1
+	CFLAGS=-L../libpcap-1.7.4-ring dh_auto_configure -D userland/tcpdump-4.7.4 -B userland/tcpdump-4.7.4
+	dh_auto_build -D userland/tcpdump-4.7.4 -B userland/tcpdump-4.7.4
 
 	dh_auto_install -D userland/lib
-	dh_auto_install -D userland/libpcap-1.1.1-ring
-	dh_auto_install -D userland/tcpdump-4.1.1
+	dh_auto_install -D userland/libpcap-1.7.4-ring
+	dh_auto_install -D userland/tcpdump-4.7.4
 
 	touch build-stamp
 
@@ -35,8 +35,8 @@ clean:
 	dh_testroot
 	rm -f build-stamp configure-stamp
 	[ ! -f userland/lib/Makefile ] || dh_auto_clean -D userland/lib
-	[ ! -f userland/libpcap-1.1.1-ring/Makefile ] || dh_auto_clean -D userland/libpcap-1.1.1-ring
-	[ ! -f userland/tcpdump-4.1.1/Makefile ] || dh_auto_clean -D userland/tcpdump-4.1.1
+	[ ! -f userland/libpcap-1.7.4-ring/Makefile ] || dh_auto_clean -D userland/libpcap-1.7.4-ring
+	[ ! -f userland/tcpdump-4.7.4/Makefile ] || dh_auto_clean -D userland/tcpdump-4.7.4
 
 	dh_clean
 
