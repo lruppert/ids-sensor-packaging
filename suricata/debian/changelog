@@ -1,3 +1,9 @@
+suricata-pfring (3.1.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Lou Ruppert <himself@louruppert.com>  Fri, 19 Aug 2016 14:35:07 +0200
+
 suricata-pfring (2.0.9-1) unstable; urgency=low
 
   * New upstream release
