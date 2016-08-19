@@ -1,7 +1,7 @@
 #
 # pfring sources
 #
-PF_RING_VERSION ?= 6.0.3
+PF_RING_VERSION ?= 6.4.1
 PF_RING_SCHEME := http
 PF_RING_HOST := iweb.dl.sourceforge.net
 PF_RING_PATH := /project/ntop/PF_RING
@@ -21,7 +21,7 @@ BRO_DL_URL := $(BRO_SCHEME)://$(BRO_HOST)$(BRO_PATH)/$(BRO_TARBALL)
 #
 # suricata sources
 #
-SURICATA_VERSION ?= 2.0.9
+SURICATA_VERSION ?= 3.1.1
 SURICATA_SCHEME := http
 SURICATA_HOST := www.openinfosecfoundation.org
 SURICATA_PATH := /download
