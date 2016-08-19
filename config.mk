@@ -3,7 +3,7 @@
 #
 PF_RING_VERSION ?= 6.4.1
 PF_RING_SCHEME := http
-PF_RING_HOST := iweb.dl.sourceforge.net
+PF_RING_HOST := downloads.sourceforge.net
 PF_RING_PATH := /project/ntop/PF_RING
 PF_RING_TARBALL := PF_RING-$(PF_RING_VERSION).tar.gz
 PF_RING_DL_URL := $(PF_RING_SCHEME)://$(PF_RING_HOST)$(PF_RING_PATH)/$(PF_RING_TARBALL)
