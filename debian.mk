@@ -141,7 +141,7 @@ define get_source_template
 	mkdir -p $(DL_DIR)
 	cd $(DL_DIR) && \
 	export dl_tarball=$$(call make_dl_tarball,$(1)) && \
-	if ! test -f $$$$dl_tarball; then $(PGM_CURL) $(CURL_PROXY) --fail -O -s "$$(call make_dl_url,$(1))"; fi && \
+	if ! test -f $$$$dl_tarball; then $(PGM_CURL) $(CURL_PROXY) --fail -O -s -L "$$(call make_dl_url,$(1))"; fi && \
 	$(PGM_TAR) xfz $$$$dl_tarball && \
 	export tld=`$(PGM_TAR) tfz $$$$dl_tarball | sed 's@/.*$$$$@@' | uniq` && \
 	cp -Rp $$$$tld/* $(PKGDIR)/$(1)/ && \
