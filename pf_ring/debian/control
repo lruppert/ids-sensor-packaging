@@ -32,7 +32,7 @@ Depends: ${shlibs:Depends}, ${misc:Depends}
 Replaces: libpfring-dev
 Description: system interface for user-level packet capture
 
-Package: libpcap1.1-dev
+Package: libpcap1.7-dev
 Section: libdevel
 Architecture: any
 Conflicts: libpcap0.8-dev
@@ -40,7 +40,7 @@ Depends: libpfring-dev (= ${binary:Version}), ${misc:Depends}, libc6-dev
 Description: development library and header files for libpcap
  Headers, static libraries, and documentation for the libpcap library.
 
-Package: libpcap1.1
+Package: libpcap1.7
 Section: libs
 Architecture: any
 Conflicts: libpcap0.8

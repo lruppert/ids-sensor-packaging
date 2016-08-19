@@ -2,7 +2,6 @@
 # -*- makefile -*-
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
-#export PFRING_VERSION=5.6.0
 export PFRING_VERSION=`grep PF_RING ChangeLog |head -1 |cut -d' ' -f3`
 
 configure: configure-stamp
@@ -70,7 +69,7 @@ binary-arch: build install
 	dh_fixperms
 	dh_installdeb
 	dh_makeshlibs -plibpfring
-	dh_makeshlibs -plibpcap1.1
+	dh_makeshlibs -plibpcap1.7
 	dh_shlibdeps
 	dh_gencontrol
 	dh_md5sums
